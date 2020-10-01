@@ -4,6 +4,7 @@ The client is Kelnitra Robinson, a small business owner located in Nashville, Te
 
 
 Baseplate Languages and Databases
+
 For our baseplate languages, we will be using the general web development stack, such as HTML, CSS, JavaScript, which are a mainstay in today's Web Development circles across the entire internet and is supported by all mobile device and browser manufacturers which we expect many of our users to access this website from. Given this we have chosen these three to be our languages of choice to maximize accessibility and usage. This will also provide maximum opportunities for growth given the ever-changing field of web development for the future owners of this project.
 
 For the database we plan on using PostgreSQL which is a database which we are quite familiar with due to our classes and work related activity expertise.
