@@ -3,8 +3,11 @@
 Team Members:
 
 Alan Koo		bonho.a.koo@vanderbilt.edu
+
 Anna Kuo		anna.c.kuo@vanderbilt.edu
+
 Michelle Lin		michelle.lin.2@vanderbilt.edu
+
 Syed Rahman	syed.f.rahman@vanderbilt.edu
 
 The client is Kelnitra Robinson, a small business owner located in Nashville, Tennessee running a barber shop by the name of Humble Fadez. The COVID-19 pandemic has put incredible pressure on small businesses to stay afloat during these unfortunate times and the client has struggled with reaching new customers. Currently, she uses her Instagram page, @kelzthabarber, to showcase her talent and her Square site to book appointments. The goal of our project is to help the client gain exposure by creating a visually appealing website for marketing purposes that also allows for engagement with potential customers. The website will have its own domain name and aims to incorporate both her Instagram and Square media into one place. In addition, the website will showcase her abilities and feature her as a barber which will likely add more personality and increase customer satisfaction.
