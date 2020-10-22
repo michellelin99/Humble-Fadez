@@ -503,6 +503,14 @@ figure.effect-honey:hover h2 i {
 
 /* Contact */
 
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+    padding:0 15px;
+}
 #contact {
   color: white;
   background-color: #001828;
