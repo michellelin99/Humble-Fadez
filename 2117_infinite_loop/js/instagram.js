@@ -1,5 +1,5 @@
 
-var token = 'IGQVJYM1FzTUkyd3dsVm9fTXpSODVRcG5pXzRnMGVndGpMTzBWSjRFWjg3dW4yRTZAhVFMyUHl1N0c4czJEdFl5VW5CTXRvUndFR1NuMXlFSnI2U0ZAUZAWNuWTZAyS3RXbE9veEFkNFlScDJwOVlSYkE0ZAAZDZD'
+var token = API_KEY
       username = 'kelzthabarber'
       num_photos = 12;
 
