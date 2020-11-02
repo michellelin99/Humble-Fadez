@@ -1,7 +1,14 @@
+//load temporary images into carousel
+var i;
+for(i = 1; i <= 8; ++i){
+  $(".img" + ((i % 4) + 1)).attr("href","img/" + ((i % 4) + 1) + ".png");
+  $(".img" + ((i % 4) + 1)).attr("src","img/" + ((i % 4) + 1) + ".png");
+}
 
+//API request to instagram to populate the first 8 recent images
 var token = API_KEY
       username = 'kelzthabarber'
-      num_photos = 12;
+      num_photos = 8;
 
   $.ajax({ // the first ajax request returns the ID of user kelzthabarber
   	url: 'https://api.instagram.com/v1/users/search',
