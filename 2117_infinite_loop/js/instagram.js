@@ -9,8 +9,8 @@ $(".d" + day).css("font-weight", "Bold");
 //load temporary images into carousel
 var i;
 for(i = 1; i <= 8; ++i){
-  $(".img" + ((i % 4) + 1)).attr("href","img/" + ((i % 4) + 1) + ".png");
-  $(".img" + ((i % 4) + 1)).attr("src","img/" + ((i % 4) + 1) + ".png");
+  $(".img" + i).attr("href","img/" + i + ".png");
+  $(".img" + i).attr("src","img/" + i + ".png");
 }
 
 //API request to instagram to populate the first 8 recent images
