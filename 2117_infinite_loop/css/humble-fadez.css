@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900");
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
 
 body {
 	font-family: "Raleway", sans-serif;
@@ -10,7 +12,7 @@ body {
 }
 a {
   transition: all 0.3s ease;
-  color: #38B;
+  color: purple;
 }
 
 a:hover,
@@ -47,7 +49,7 @@ blockquote {
 }
 
 .tm-text-primary {
-  color: #37A;
+  color: purple;
 }
 
 .tm-font-big {
@@ -56,14 +58,14 @@ blockquote {
 
 .tm-btn-primary {
   color: white;
-  background-color: #369;
+  background-color: purple;
   padding: 14px 30px;
 }
 
 .tm-btn-primary:hover,
 .tm-btn-primary:focus {
   color: white;
-  background-color: #38B;
+  background-color: purple;
 }
 
 /* Navbar */
@@ -83,17 +85,18 @@ blockquote {
 
 .navbar-brand {
   color: white;
+  font-family: 'Squada One', cursive;
   font-size: 1.4rem;
   font-weight: bold;
 }
 
 .navbar-brand:hover,
 .tm-navbar.scroll .navbar-brand:hover {
-  color: #38B;
+  color: purple;
 }
 
 .tm-navbar.scroll .navbar-brand {
-  color: #369;
+  color: purple;
 }
 
 .nav-item {
@@ -102,17 +105,19 @@ blockquote {
 
 .tm-nav-link {
   color: white;
+  font-family: 'Squada One', cursive;
+  font-size: 1.4rem;
 }
 
 .tm-navbar.scroll .tm-nav-link {
-  color: #369;
+  color: purple;
 }
 
 .tm-navbar.scroll .tm-nav-link:hover,
 .tm-navbar.scroll .tm-nav-link.current,
 .tm-nav-link:hover {
   color: #FFF;
-  background-color: #369;
+  background-color: purple;
 }
 
 .navbar-toggler {
@@ -135,14 +140,12 @@ blockquote {
 }
 
 /* Hero */
-
 #home {
-	background-color: #222;
-  background-image: url(../img/black-background.jpg);
+  background-color: #222;  
+  background-image: url(../img/black-purple-gradient.jpg);
   background-repeat: no-repeat;
   height: 100vh;
   min-height: 375px;
-  position: relative;
 }
 
 @media (min-height: 600px) and (min-width: 1920px) {
@@ -184,16 +187,30 @@ blockquote {
 }
 
 .tm-hero-text-container-inner {
-  margin-top: -90px;
+  margin-top: -5px;
 }
 
 .tm-hero-title {
-  font-size: 3.5rem;
+  font-family: 'Bebas Neue', cursive;
   text-shadow: 2px 2px 2px #333;
+  z-index: 1000;
+  position: relative;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  font-size: 12vw;
+  text-shadow: 4px 4px 0px purple;
+  mix-blend-mode: screen;
+  animation: fadeIn 2.5s linear forwards;
 }
 
-.tm-hero-subtitle {
-  text-shadow: 2px 2px 2px #333;
+@keyframes fadeIn {
+  0% {
+      opacity: 0
+  }
+
+  100% {
+      opacity: 1;
+  }
 }
 
 .tm-intro-next {
@@ -221,7 +238,7 @@ blockquote {
 .tm-down-arrow {
   	color: #FFF;
     cursor: pointer;
-    background: #357;
+    background: purple;
     padding: 15px 40px;
     transition: all 0.3s ease;
 }
@@ -229,7 +246,7 @@ blockquote {
 .tm-down-arrow:hover,
 .tm-down-arrow:focus {
   color: #FFF;
-  background: #37A;
+  background: purple;
   padding: 20px 50px;
 }
 
@@ -240,7 +257,8 @@ blockquote {
 }
 
 .tm-section-title {
-  font-size: 2.6rem;
+  font-family: 'Squada One', cursive;
+  font-size: 3.5rem;
   font-weight: normal;
 }
 
@@ -250,7 +268,7 @@ blockquote {
 
 .tm-icon {
   display: block;
-  color: #37A;
+  color: purple;
 }
 
 .tm-continue {
@@ -260,7 +278,7 @@ blockquote {
 /* Testimonials */
 #testimonials {
   color: white;
-  background-image: url(../img/black-background.jpg);
+  background-image: url(../img/black-purple-gradient.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -306,9 +324,14 @@ blockquote {
   margin-bottom: 35px;
 }
 
+.tm-testimonial-item blockquote {
+  font-family: 'Squada One', cursive;
+  font-size: 1.1rem;
+}
+
 .tm-testimonial-item figcaption {
   text-align: right;
-  font-style: italic;
+  font-family: 'Squada One', cursive;
   font-size: 1.1rem;
 }
 
@@ -317,7 +340,8 @@ blockquote {
 .tm-section-desc {
   max-width: 650px;
   width: 100%;
-  font-size: 0.9rem;
+  font-family: 'Squada One', cursive;
+  font-size: 1.5rem;
 }
 
 .tm-gallery-container {
@@ -341,7 +365,7 @@ blockquote {
 .slick-dots li button:focus:before,
 .slick-dots li.slick-active button:before {
   opacity: 1;
-  color: #3ba0dd;
+  color: purple;
 }
 
 .tm-testimonials-carousel .slick-dots li button:before {
@@ -366,7 +390,7 @@ blockquote {
   position: relative;
   float: left;
   overflow: hidden;
-  background: #3085a3;
+  background: purple;
   text-align: center;
   cursor: pointer;
 }
@@ -457,7 +481,7 @@ figure.effect-honey figcaption::before {
   left: 0;
   width: 100%;
   height: 10px;
-  background: #38C;
+  background: purple;
   content: "";
   -webkit-transform: translate3d(0, 10px, 0);
   transform: translate3d(0, 10px, 0);
@@ -503,6 +527,11 @@ figure.effect-honey:hover h2 i {
 
 /* Contact */
 
+.mb-0 {
+  font-family: 'Squada One', cursive;
+  font-size: 1.5rem;
+}
+
 .center {
   margin-left: auto;
   margin-right: auto;
@@ -514,7 +543,7 @@ td {
 #contact {
   color: white;
   background-color: #001828;
-  background-image: url(../img/black-background.jpg);
+  background-image: url(../img/black-purple-gradient.jpg);
   background-position: center;
   background-repeat: no-repeat;
   min-height: 980px;
@@ -541,7 +570,7 @@ td {
 
 .item-link:hover i,
 .item-link:hover span {
-  color: #3496d8;
+  color: purple;
 }
 
 .tm-input {
@@ -555,16 +584,17 @@ td {
 }
 
 .tm-btn-submit {
-	font-size: 0.9em;
+  font-family: 'Squada One', cursive;
+	font-size: 1.5em;
 	color: #fff;
-	background-color: #369;
+	background-color: purple;
 	width: 50%;
 	margin-bottom: 60px;
 }
 
 .tm-btn-submit:hover {
 	color: #fff;
-	background-color: #38B;
+	background-color: purple;
 }
 
 ::placeholder {
@@ -605,7 +635,7 @@ td {
 
 .tm-footer-link:hover,
 .tm-footer-link:focus {
-  color: #38B;
+  color: purple;
   text-decoration: none;
 }
 
