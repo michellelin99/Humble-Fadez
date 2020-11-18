@@ -7,19 +7,20 @@ const DATES = {0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday",
 4: "Thursday", 5: "Friday", 6: "Saturday"};
 const original = new Date();
 
-var selectedSlot = [null, null];
+//Global constants to maintain state for now
+var selectedSlot = undefined;
 var selectedDate = null;
 var selectedTime = null;
 var table = document.getElementById("slot");
+var times = new Array(TIMES);
+var btns = new Array(TIMES);
+
+for(let i = 0; i < TIMES; ++i){
+  times[i] = new Array(DAYS).fill(true);
+  btns[i] = new Array(DAYS).fill(null);
+}
 
 
-//create array of 3 days each with 16 times slots from 9:00AM - 5:30 PM
-//for purpose of demo ONLY!!
-var times = null;
-var btns = null;
-
-
-//book is selected second time => hide everything once again
 document.getElementById("book-btn").addEventListener("click", generateSlot);
 
 
@@ -28,6 +29,7 @@ function noSlot(){
 }
 
 function selectSlot(e, time, row, column){
+  selectedSlot = [time, row];
   //configure time
   time += 9;
   time %= 12;
@@ -46,42 +48,21 @@ function selectSlot(e, time, row, column){
 
   let form = document.getElementById("schedule-info");
 
-  if(selectedSlot[0] == row && selectedSlot[1] == column){
-    alert("no slot selected");
-    (btns[row][column]).style.backgroundColor = "purple";
-    form.style.visibility = "hidden";
-    form.style.display = "none";
+  form.style.visibility = "visible";
+  form.style.display = "block";
 
-    selectedSlot[0] = null;
-    selectedSlot[1] = null;
-
-  } else {
-    //set the previous value of r, c btn to purple
-    //make the background of the new r, c to blue
-    //if(selectedSlot[0] != null && selectedSlot[1] != null){
-      //btns[selectedSlot[0]][selectedSlot[1]].style.backgroundColor = "purple";
-    //}
-
-    selectedSlot[0] = row;
-    selectedSlot[1] = column;
-    //btns[row][column].style.backgroundColor = "blue";
-
-    form.style.visibility = "visible";
-    form.style.display = "block";
-
-    let date = new Date();
-    date.setDate(original.getDate() + row + 1);
-    let dateFormatted = (date.getMonth() + 1) + "/" + date.getDate()
+  let date = new Date();
+  date.setDate(original.getDate() + row + 1);
+  let dateFormatted = (date.getMonth() + 1) + "/" + date.getDate()
                                   + "/" + date.getFullYear();
-    selectedDate = dateFormatted;
+  selectedDate = dateFormatted;
 
 
-    let submissionButton = document.getElementById("schedule-submit");
-    submissionButton.innerHTML = "Book " + dateFormatted + " at " + timeFormatted;
-  }
+  let submissionButton = document.getElementById("schedule-submit");
+  submissionButton.innerHTML = "Book " + dateFormatted + " at " + timeFormatted;
+
 
   selectedSlot = !selectedSlot;
-  selectedDate = dateFormatted;
   selectedTime = timeFormatted;
 
   //send email to provider + barber
@@ -99,7 +80,6 @@ function confirmSlot(){
   if(confirm("Confirm that you have selected " + selectedDate + " at " + selectedTime)){
     alert("A confirmation email has been sent! We look forward to getting"
     + " your hair to its sharpest form!");
-
     //add in form details here using modual box
   } else {
     alert("Please select another time by clicking BOOK once again.");
@@ -114,10 +94,10 @@ function confirmSlot(){
 
 function generateSlot(){
   $('#slot').empty();
-  times = new Array(TIMES).fill(new Array(DAYS).fill(true));
+
+  //FAKE DATA here
   times[0][0] = false;
-  times[0][1] = true;
-  btns = new Array(TIMES).fill(new Array(DAYS).fill(null));
+  times[5][1] = false;
 
   var original = new Date();
   var currentDate = original;
@@ -148,7 +128,7 @@ function generateSlot(){
 
       btns[i][j] = document.createElement('input');
       btns[i][j].type = "button";
-      btns[i][j].className = "btn tm-btn-submit";
+      btns[i][j].className = "tm-btn-submit-schedule";
 
       //display time correctly
       if(time == 0){
@@ -168,8 +148,8 @@ function generateSlot(){
       if(times[i][j]){
       (btns[i][j]).addEventListener("click", selectSlot.bind(null, time, i, j), false);
       } else {
-      (btns[i][j]).addEventListener("click", noSlot); //a little bit buggy here TODO
-      btns[i][j].style.backgroundColor = "grey"
+      (btns[i][j]).addEventListener("click", noSlot);
+      btns[i][j].style.backgroundColor = "grey";
       }
       slot.appendChild(btns[i][j]);
 

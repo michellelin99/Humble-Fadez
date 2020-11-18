@@ -602,6 +602,16 @@ td {
 	margin-bottom: 60px;
 }
 
+.tm-btn-submit-schedule {
+  font-family: 'Squada One', cursive;
+	font-size: 1.5em;
+	color: #fff;
+	background-color: purple;
+	width: 50%;
+	margin-bottom: 30px;
+}
+
+
 .tm-btn-submit:hover {
 	color: #fff;
 	background-color: purple;
