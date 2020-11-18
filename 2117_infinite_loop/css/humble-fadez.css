@@ -141,7 +141,7 @@ blockquote {
 
 /* Hero */
 #home {
-  background-color: #222;  
+  background-color: #222;
   background-image: url(../img/black-purple-gradient.jpg);
   background-repeat: no-repeat;
   height: 100vh;
@@ -525,6 +525,14 @@ figure.effect-honey:hover h2 i {
 	padding-top: 30px;
 	}
 
+/* Schedule */
+
+#schedule-info{
+	margin: 30px 0px 30px 0px;
+	visibility: hidden;
+	display: none;
+}
+
 /* Contact */
 
 .mb-0 {
@@ -644,6 +652,7 @@ td {
 p {
   line-height: 1.9;
 }
+
 
 @media (min-width: 768px) {
   .tm-intro-text-container {
