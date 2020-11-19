@@ -1,3 +1,5 @@
+//-------> TODO: ADD FIREBASE NOSQL QUERIES <--------------------
+
 //constants -- SHOULD BE GLOBAL
 const DAYS = 3;
 const TIMES = 8;

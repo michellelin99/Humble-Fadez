@@ -37,12 +37,14 @@
                   <a class="nav-link tm-nav-link" href="#testimonials">GALLERY</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link tm-nav-link" href="#contact">BOOK A DATE</a>
+                  <a type="button" class="nav-link tm-nav-link" data-toggle="modal" data-target="#loginModal"> LOGIN </a>
+                </div>
               </li>
             </ul>
           </div>
         </div>
       </nav>
+
       <div class="text-center tm-hero-text-container">
         <div class="tm-hero-text-container-inner">
             <h2 class="tm-hero-title">H U M B L E</h2>
@@ -325,6 +327,52 @@
 
         </div><!-- row ending -->
 
+
+        <!-- login modal popup -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header border-bottom-0">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-title text-center">
+                  <h2 class="tm-section-title mb-4" style="color:purple"> LOGIN </h2>
+                </div>
+                <div class="d-flex flex-column text-center">
+                  <form>
+                    <div class="form-group">
+                      <input type="email" class="form-control" id="email1"placeholder="Your email address" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" id="password1" placeholder="Your password" required>
+                    </div>
+                    <button type="button" class="btn btn-info btn-block btn-round">Login</button>
+                  </form>
+
+                  <div class="text-center text-muted delimiter">or use a social network</div>
+                  <div class="d-flex justify-content-center social-buttons">
+                    <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Twitter">
+                      <i class="fab fa-twitter"></i>
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
+                      <i class="fab fa-facebook"></i>
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Linkedin">
+                      <i class="fab fa-linkedin"></i>
+                    </button>
+                  </di>
+                </div>
+              </div>
+            </div>
+              <div class="modal-footer d-flex justify-content-center">
+                <div class="signup-section">Not a member yet? <a href="#a" class="text-info"> Sign Up</a>.</div>
+              </div>
+          </div>
+        </div>
+
       </div>
 
     </section>
@@ -343,7 +391,7 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
          https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script>
-    
+
     <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
 
