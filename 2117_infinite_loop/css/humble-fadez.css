@@ -179,6 +179,12 @@ blockquote {
   border-radius: 3rem;
 }
 
+.btn {
+	background-color: purple;
+	border: none;
+	margin-right: 10px;
+}
+
 .delimiter {
   padding: 1rem;
 }
@@ -582,7 +588,7 @@ figure.effect-honey:hover h2 i {
 /* Schedule */
 
 #schedule-info{
-	margin: 30px 0px 30px 0px;
+	margin: 60px 0px 60px 0px;
 	visibility: hidden;
 	display: none;
 }
