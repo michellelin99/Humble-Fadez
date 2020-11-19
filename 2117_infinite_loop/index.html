@@ -69,11 +69,9 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="tm-intro-text-container">
-                        <h2 class="tm-text-primary mb-4">Kelnitra Robinson</h2>
-                         <img src='img/Kelz.png' style='float: top;'/>
+                        <h2 class="tm-text-primary mb-4">Name</h2>
                         <p class="mb-4 tm-intro-text">
-                         Kelnitra Robinson, affectionately known as “Kelz”, is a licensed Master Barber located in Nashville, Tennessee.  Kelz has been cutting hair and servicing clients in the Nashville area for more than 6 years.  Her love for barbering began many years ago when she started cutting her nephews’ hair. This love quickly evolved into a strong passion, which ultimately led Kelz to the classroom for formal barber education and training.  Since that time, Kelz has worked alongside and been mentored by some of Nashville’s top barbers and barber influencers in the Atlanta, Houston, and Dallas barber industry.  Kelz attends numerous barber conferences, classes, and hair shows throughout the year, as she is committed to perfecting her craft, expanding her knowledge, and fueling her creativity and passion.  In fact, her creativity and passion is exactly what earned her a trophy for placing among the top 3 barbers in the Xotics Hair Battle in 2019. As a talented, gifted, award-winning barber, Kelz remains humble, and that humility is what inspired and birthed her brand Humble Fadez.  Kelz is dedicated to building strong connections with her clients and helping them express their personalities through every cut.  When Kelz is not creating waves in the barbershop, she is traveling, cooking, expanding her other businesses and spending time with her family.  
-“Barbering saved my life”- Kelz Tha Barber</p>
+                         (***Insert Text***)</p>
                     </div>
                 </div>
             </div>
@@ -92,9 +90,9 @@
             <div class="mx-auto tm-gallery-container tm-gallery-container-2">
               <div class="tm-testimonials-carousel">
                 <figure class="tm-testimonial-item">
-                  <img src="img/Testimonial1.jpg" alt="Image" class="img-fluid mx-auto">
-                  <blockquote>Kelz's haircut gives me the confidence I need to succeed in class and in my career, I highly recommend her!</blockquote>
-                  <figcaption>Syed R.</figcaption>
+                  <img src="img/default-person.jpg" alt="Image" class="img-fluid mx-auto">
+                  <blockquote>(Insert Testimonial)</blockquote>
+                  <figcaption>(Insert Name)</figcaption>
                 </figure>
 
                 <figure class="tm-testimonial-item">
@@ -134,10 +132,8 @@
           <div class="text-center col-12">
               <h2 class="tm-text-primary tm-section-title mb-4">GALLERY</h2>
               <p class="mx-auto tm-section-desc">
-                <!--(***Insert Text***)-->
-                Check out these amazing cuts I've given over the years, from children to students to adults and the elderly, customer satisfication and perfection is my goal!
+                (***Insert Text***) (Link to Instagram)
               </p>
-              <a class="btn tm-btn-submit" href="https://www.instagram.com/kelzthabarber/" role="button">Instagram!</a>
           </div>
         </div>
         <div class="row">
@@ -261,9 +257,27 @@
                     </tr>
                   </table><br>
                   <br>
-                   <a class="btn tm-btn-submit" href="https://square.site/book/469G342XRY8B5/humble-fadez-nashville-tn" role="button">BOOK NOW</a>
+                   <button id="book-btn" class="btn tm-btn-submit" >BOOK NOW</button>
                 </p> <br>
+
+                <!-- Schedule Appointment -->
+                <div id="schedule">
+                  <table id="slot", class="center">
+
+                  </table>
+                </div>
+
+                <!-- Fill in Form for Appointment -->
+                <div id="schedule-info">
+                  <form id= "schedule-form" action="" onsubmit="confirmSlot();return false;" method="get">
+                    <input id="schedule-name" name="name" type="text" placeholder="Your Name" class="tm-input" required />
+                    <input id="schedule-email" name="email" type="email" placeholder="Your Email" class="tm-input" required />
+                    <input id="schedule-phone" name="phone" type="tel" placeholder="Your Phone #" class="tm-input" required />
+                    <button id ="schedule-submit" type="submit" class="btn tm-btn-submit mb-1">BOOK</button>
+                  </form>
+                </div>
             </div>
+
 
             <div class="text-center col-12">
                 <h2 class="tm-section-title mb-4">JOIN MAILING LIST</h2>
@@ -316,7 +330,8 @@
     </section>
 
     <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="js/instagram.js"></script>
+    <script src="js/features.js"></script>
+    <script src="js/schedule.js"></script>
     <script src="slick/slick.min.js"></script>
     <script src="magnific-popup/jquery.magnific-popup.min.js"></script>
     <script src="js/easing.min.js"></script>
