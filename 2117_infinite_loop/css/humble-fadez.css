@@ -25,6 +25,13 @@ a:focus {
   outline: none;
 }
 
+.alert{
+    text-align: center;
+    background: #FF3371;
+    margin-bottom: 10px;
+    display: none;
+}
+
 .btn {
   padding: 8px 32px;
 }
