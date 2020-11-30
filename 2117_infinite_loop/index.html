@@ -269,11 +269,20 @@
                       <td>Saturday</td>
                       <td>9:00 AM - 5:30 PM</td>
                     </tr>
-                  </table><br>
-                  <br>
-                   <button id="book-btn" class="btn tm-btn-submit" >BOOK NOW</button>
-                </p> <br>
+                  </table><br><br>
+                   <button id="book-btn" class="btn tm-btn-submit">BOOK NOW</button>
+                   <button id="addtimes-btn" class="btn tm-btn-submit">ADD TIMES</button>
 
+                 <br>
+
+                <!-- Add Appointment Dates -->
+                <form id="addTimeForm" method="post">
+                  <label for="day">Day:</label>
+                  <input type="date" id="date" name="day">
+                  <label for="hour">Select a time:</label>
+                  <input type="time" id="hour" name="hour">
+                  <input type="submit" id="addTimeBtn">
+                </form>
                 <!-- Schedule Appointment -->
                 <div id="schedule">
                   <table id="slot", class="center">
@@ -283,7 +292,7 @@
 
                 <!-- Fill in Form for Appointment -->
                 <div id="schedule-info">
-                  <form id= "schedule-form" action="" onsubmit="confirmSlot();return false;" method="get">
+                  <form id= "schedule-form" action="" onsubmit="confirmSlot();return false;" method="post">
                     <input id="schedule-name" name="name" type="text" placeholder="Your Name" class="tm-input" required />
                     <input id="schedule-email" name="email" type="email" placeholder="Your Email" class="tm-input" required />
                     <input id="schedule-phone" name="phone" type="tel" placeholder="Your Phone #" class="tm-input" required />
@@ -354,7 +363,7 @@
                   <h2 class="tm-section-title mb-4" style="color:purple"> LOGIN </h2>
                 </div>
                 <div class="d-flex flex-column text-center">
-                  <form id ="auth">
+                  <form id ="auth" method="post">
                     <div class="form-group">
                       <input type="email" class="form-control" id="email1"placeholder="Your email address" required>
                     </div>

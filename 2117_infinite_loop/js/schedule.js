@@ -9,7 +9,6 @@ const DATES = {0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday",
 4: "Thursday", 5: "Friday", 6: "Saturday"};
 const original = new Date();
 
-//Global constants to maintain state for now
 var selectedSlot = undefined;
 var selectedDate = null;
 var selectedTime = null;
@@ -22,8 +21,6 @@ for(let i = 0; i < TIMES; ++i){
   btns[i] = new Array(DAYS).fill(null);
 }
 
-
-document.getElementById("book-btn").addEventListener("click", generateSlot);
 
 
 function noSlot(){
@@ -153,7 +150,7 @@ function generateSlot(){
         (btns[i][j]).addEventListener("click", noSlot);
         btns[i][j].style.backgroundColor = "grey";
       }
-      
+
       slot.appendChild(btns[i][j]);
 
     }

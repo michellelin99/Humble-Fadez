@@ -4,8 +4,11 @@ var LOGIN_NAV = 'loginNav';
 var MY_ACCOUNT = "myAccount";
 var HIDE = "hidden";
 var SHOW = "visible";
-var NONE = "none"; 
+var NONE = "none";
 var BLOCK = "block";
+var ADMIN = "lin.9.michelle@gmail.com";
+var ADD_FORM = 'addTimeForm';
+var ADD_BUTTON = "addtimes-btn";
 
 firebase.auth.Auth.Persistence.LOCAL;
 
@@ -104,14 +107,24 @@ function setItemMode(item, mode, display){
 
 // Set loginNav, loginModal and myAccount based on current user
 function onUserChange(user){
+  $('#slot').empty();
   if (user) {
     // User is signed in.
     setItemMode(document.getElementById(LOGIN_NAV), HIDE, NONE);
     setItemMode(document.getElementById(MY_ACCOUNT), SHOW, BLOCK);
+    if(user.email == ADMIN){
+      document.getElementById(ADD_BUTTON).addEventListener("click", addTimes);
+      setItemMode(document.getElementById(ADD_BUTTON), SHOW, "inline");
+      setItemMode(document.getElementById("book-btn"), HIDE, NONE);
+    }
   } else {
     // No user is signed in.
     setItemMode(document.getElementById(LOGIN_NAV), SHOW, BLOCK);
     setItemMode(document.getElementById(MY_ACCOUNT), HIDE, NONE);
+    setItemMode(document.getElementById("book-btn"), SHOW, "inline");
+    document.getElementById("book-btn").addEventListener("click", generateSlot);
+    setItemMode(document.getElementById(ADD_FORM), HIDE, NONE)
+    setItemMode(document.getElementById(ADD_BUTTON), HIDE, NONE);
   }
 }
 
@@ -155,4 +168,23 @@ function saveInfo(name, email) {
         email: email
     });
 
+}
+
+/* Admin */
+
+//Form to addTimes
+function addTimes(){
+  setItemMode(document.getElementById(ADD_FORM), SHOW, BLOCK);
+  document.getElementById("addtimeBtn").addEventListener('click', add);
+}
+
+function add(e){
+  e.preventDefault();
+
+  var newTimeSlotRef = timeSlotRef.push();
+  newTimeSlotRef.set({
+    day: document.getElementById('day').value,
+    hour: document.getElementById('hour').value,
+    user: ""
+  });
 }

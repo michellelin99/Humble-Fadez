@@ -607,6 +607,18 @@ figure.effect-honey:hover h2 i {
 
 /* Schedule */
 
+#addTimeForm{
+	margin: 0px 0px 60px 0px;
+	visibility: hidden;
+	display: none;
+}
+
+#addtimes-btn{
+	visibility: hidden;
+	display: none;
+	justify-content: center;
+}
+
 #schedule-info{
 	margin: 60px 0px 60px 0px;
 	visibility: hidden;
