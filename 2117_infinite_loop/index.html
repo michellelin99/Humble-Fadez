@@ -36,8 +36,14 @@
               <li class="nav-item">
                   <a class="nav-link tm-nav-link" href="#testimonials">GALLERY</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" id="loginNav">
                   <a type="button" class="nav-link tm-nav-link" data-toggle="modal" data-target="#loginModal"> LOGIN </a>
+              </li>
+              <li class="nav-item" id="myAccount">
+                <div class="dropdown">
+                  <a class="nav-link tm-nav-link" href="#testimonials">MY ACCOUNT</a>
+                <div class="dropdown-content">
+                  <a href="#" id="logoutBtn">LOGOUT</a>
                 </div>
               </li>
             </ul>
@@ -348,14 +354,16 @@
                   <h2 class="tm-section-title mb-4" style="color:purple"> LOGIN </h2>
                 </div>
                 <div class="d-flex flex-column text-center">
-                  <form>
+                  <form id ="auth">
                     <div class="form-group">
                       <input type="email" class="form-control" id="email1"placeholder="Your email address" required>
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control" id="password1" placeholder="Your password" required>
                     </div>
-                    <button type="button" class="btn btn-info btn-block btn-round">Login</button>
+                    <button type="submit" class="btn btn-info btn-block btn-round" id="loginBtn">Login</button>
+                    <button type="submit" class="btn btn-info btn-block btn-round" id="signupBtn">Sign Up</button>
+
                   </form>
 
                   <div class="text-center text-muted delimiter">or use a social network</div>
@@ -373,9 +381,6 @@
                 </div>
               </div>
             </div>
-              <div class="modal-footer d-flex justify-content-center">
-                <div class="signup-section">Not a member yet? <a href="#a" class="text-info"> Sign Up</a>.</div>
-              </div>
           </div>
         </div>
 
@@ -391,6 +396,8 @@
     <script src="js/easing.min.js"></script>
     <script src="js/jquery.singlePageNav.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
 

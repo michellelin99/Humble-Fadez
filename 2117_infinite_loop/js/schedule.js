@@ -148,11 +148,12 @@ function generateSlot(){
 
       //add correct event listener based on avaliability
       if(times[i][j]){
-      (btns[i][j]).addEventListener("click", selectSlot.bind(null, time, i, j), false);
+        (btns[i][j]).addEventListener("click", selectSlot.bind(null, time, i, j), false);
       } else {
-      (btns[i][j]).addEventListener("click", noSlot);
-      btns[i][j].style.backgroundColor = "grey";
+        (btns[i][j]).addEventListener("click", noSlot);
+        btns[i][j].style.backgroundColor = "grey";
       }
+      
       slot.appendChild(btns[i][j]);
 
     }

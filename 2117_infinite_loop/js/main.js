@@ -1,41 +1,145 @@
+// constants
+var LOGIN_MODAL = 'loginModal';
+var LOGIN_NAV = 'loginNav';
+var MY_ACCOUNT = "myAccount";
+var HIDE = "hidden";
+var SHOW = "visible";
+var NONE = "none"; 
+var BLOCK = "block";
 
-
-
+firebase.auth.Auth.Persistence.LOCAL;
 
 // Reference messages collection
 
 var infoRef =  firebase.database().ref("info");
+var timeSlotRef = firebase.database().ref("timeslot");
 
 
-// Listen for form submit
+// Listen for form submits
 
+// Mailing list
 document.getElementById("contactForm").addEventListener('submit', submitForm);
 
-// Submit Form
+// User Login
+document.getElementById("loginBtn").addEventListener('submit', signInWithEmailPassword);
+
+// User Signup
+document.getElementById("signupBtn").addEventListener('submit', signUpWithEmailPassword);
+
+// Logout
+document.getElementById("logoutBtn").addEventListener('click', signOut);
+
+
+// Submit Mailing Form
 function submitForm(e) {
     e.preventDefault();
-    
+
     // Get values
-    
+
     var name = getInputVal('name');
     var email = getInputVal('email');
-    
+
     // Save message
     saveInfo(name, email);
-    
+
     // Show alert
-    
+
     document.querySelector(".alert").style.display = 'block';
-    
+
     // Hide alert after 3 seconds
     setTimeout(function() {
         document.querySelector(".alert").style.display = 'none';
     }, 3000);
-    
+
     // Clear form
-    
+
     document.getElementById("contactForm").reset();
 }
+
+// Login
+function signInWithEmailPassword(e) {
+  e.preventDefault();
+  var email = getInputVal('email1');
+  var password = getInputVal('password1');
+  // [START auth_signin_password]
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((user) => {
+      // Signed in
+      document.getElementById(MY_ACCOUNT).text = email;
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    });
+  // [END auth_signin_password]
+}
+
+// Signup
+function signUpWithEmailPassword(e) {
+  e.preventDefault();
+  var email = getInputVal('email1');
+  var password = getInputVal('password1');
+  // [START auth_signup_password]
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((user) => {
+      // Signed in
+      onUserChange(user);
+      document.getElementById(MY_ACCOUNT).text = email;
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+      // ..
+    });
+  // [END auth_signup_password]
+}
+
+// Set item visibility to mode and display to display
+function setItemMode(item, mode, display){
+  item.style.visibility = mode;
+  item.style.display = display;
+}
+
+// Set loginNav, loginModal and myAccount based on current user
+function onUserChange(user){
+  if (user) {
+    // User is signed in.
+    setItemMode(document.getElementById(LOGIN_NAV), HIDE, NONE);
+    setItemMode(document.getElementById(MY_ACCOUNT), SHOW, BLOCK);
+  } else {
+    // No user is signed in.
+    setItemMode(document.getElementById(LOGIN_NAV), SHOW, BLOCK);
+    setItemMode(document.getElementById(MY_ACCOUNT), HIDE, NONE);
+  }
+}
+
+// Set nav as appropriate on user change
+firebase.auth().onAuthStateChanged(function(user) {
+  onUserChange(user);
+});
+
+//Logout
+function signOut(){
+    firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        swal({
+            type: 'successfull',
+            title: 'Signed Out',
+        }).then((value) => {
+        });
+    }).catch(function(error) {
+        // An error happened.
+        let errorMessage = error.message;
+        swal({
+            type: 'error',
+            title: 'Error',
+            text: "Error",
+        })
+    });
+}
+
 
 // Function to get form values
 function getInputVal(id) {
@@ -50,6 +154,5 @@ function saveInfo(name, email) {
         name: name,
         email: email
     });
-    
-}
 
+}
