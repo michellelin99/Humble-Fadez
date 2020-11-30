@@ -105,6 +105,7 @@ function signUpWithEmailPassword(e) {
   }
 }
 
+// On login or signup success message
 function successfulLogin(){
   document.getElementById("modal-title").textContent = "SUCCESSFUL! Please click the X."
 }
@@ -171,7 +172,6 @@ function getInputVal(id) {
 }
 
 // Save info to fireBase
-
 function saveInfo(name, email) {
     var newInfoRef = infoRef.push();
     newInfoRef.set({
@@ -183,12 +183,13 @@ function saveInfo(name, email) {
 
 /* Admin */
 
-//Form to add a single time slot to timeslot table
+// Set form to add timeslot to visible
 function addTimes(){
   setItemMode(document.getElementById(ADD_FORM), SHOW, BLOCK);
   document.getElementById("singleAddBtn").addEventListener('click', add);
 }
 
+// Add a single time slot
 function add(e){
   e.preventDefault();
 
