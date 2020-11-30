@@ -30,7 +30,7 @@ function setMessage(message){
 }
 
 function noSlot(){
-  setMessage("This time slot is not avaliable");
+  setMessage("This time slot is not avaliable.");
 }
 
 function selectSlot(e, time, row, column){

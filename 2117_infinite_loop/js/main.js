@@ -75,7 +75,7 @@ function signInWithEmailPassword(e) {
       .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
-        unSuccessfulLogin();
+        unSuccessfulLog();
       });
     // [END auth_signin_password]
   }
@@ -99,7 +99,7 @@ function signUpWithEmailPassword(e) {
         var errorMessage = error.message;
         console.log(errorCode);
         console.log(errorMessage);
-        unSuccessfulLogin();
+        unSuccessfulLog();
       });
     // [END auth_signup_password]
   }
@@ -107,11 +107,16 @@ function signUpWithEmailPassword(e) {
 
 // On login or signup success message
 function successfulLogin(){
-  setMessage("You have successfully logged in!")
+  setMessage("You have successfully logged in!");
   document.getElementById("close").click();
 }
 
-function unSuccessfulLogin(){
+function successfulLogout(){
+  setMessage("You have successfully logged out!");
+  document.getElementById("close").click();
+}
+
+function unSuccessfulLog(){
   setMessage("Please try again.");
 }
 // Set item visibility to mode and display to display
@@ -152,19 +157,15 @@ firebase.auth().onAuthStateChanged(function(user) {
 function signOut(){
     firebase.auth().signOut().then(function() {
         // Sign-out successful.
-        swal({
-            type: 'successfull',
-            title: 'Signed Out',
-        }).then((value) => {
-        });
+        successfulLogout();
     }).catch(function(error) {
         // An error happened.
-        let errorMessage = error.message;
-        swal({
-            type: 'error',
-            title: 'Error',
-            text: "Error",
-        })
+
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+        unSuccessfulLog();
     });
 }
 
@@ -207,7 +208,7 @@ function add(e){
       user: ""
     });
 
-    alert("sucessfully added " + day + " @ " + hour);
+    setMessage("Sucessfully added " + day + " @ " + hour + ".");
   }
 
   document.getElementById(ADD_FORM).reset();
