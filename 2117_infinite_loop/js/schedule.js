@@ -1,6 +1,5 @@
-//-------> TODO: ADD FIREBASE NOSQL QUERIES <--------------------
 
-//constants -- SHOULD BE GLOBAL
+//constants
 const DAYS = 3;
 const TIMES = 8;
 const START_DAY = 2;
@@ -9,6 +8,10 @@ const DATES = {0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday",
 4: "Thursday", 5: "Friday", 6: "Saturday"};
 const original = new Date();
 
+/* Firebase */
+
+
+// global variables
 var selectedSlot = undefined;
 var selectedDate = null;
 var selectedTime = null;
@@ -21,10 +24,13 @@ for(let i = 0; i < TIMES; ++i){
   btns[i] = new Array(DAYS).fill(null);
 }
 
-
+function setMessage(message){
+  document.getElementById("pop-up-modal-title").textContent = message;
+  $("#popUpModal").modal("toggle");
+}
 
 function noSlot(){
-  alert("This time has been booked. Please select another! :)")
+  setMessage("This time slot is not avaliable");
 }
 
 function selectSlot(e, time, row, column){
@@ -66,23 +72,18 @@ function selectSlot(e, time, row, column){
 
   //send email to provider + barber
 
-  //hide scheduler
-
-  //show confirmation message + check email
-  //set form to submit info visible
-
-  //on clicking the btn to submit => confirm Slot();
 }
 
 function confirmSlot(){
-
+  let msg = null;
   if(confirm("Confirm that you have selected " + selectedDate + " at " + selectedTime)){
-    alert("A confirmation email has been sent! We look forward to getting"
-    + " your hair to its sharpest form!");
-    //add in form details here using modual box
+    msg = "A confirmation email has been sent! We look forward to getting" + " your hair to its sharpest form!";
+
   } else {
-    alert("Please select another time by clicking BOOK once again.");
+    msg =  "Please select another time by clicking BOOK once again.";
   }
+
+  setMessage(msg);
 
   let form = document.getElementById("schedule-info");
   form.style.visibility = "hidden";
@@ -94,9 +95,7 @@ function confirmSlot(){
 function generateSlot(){
   $('#slot').empty();
 
-  //FAKE DATA here
   times[0][0] = false;
-  times[5][1] = false;
 
   var original = new Date();
   var currentDate = original;

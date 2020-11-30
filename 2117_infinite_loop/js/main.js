@@ -1,4 +1,4 @@
-"modal-body"// constants
+// constants
 var LOGIN_MODAL = 'loginModal';
 var LOGIN_NAV = 'loginNav';
 var MY_ACCOUNT = "myAccount";
@@ -61,7 +61,6 @@ function submitForm(e) {
 
 // Login
 function signInWithEmailPassword(e) {
-  alert("signing in!")
   e.preventDefault();
   var email = getInputVal('email1');
   var password = getInputVal('password1');
@@ -71,12 +70,12 @@ function signInWithEmailPassword(e) {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((user) => {
         // Signed in
-        setItemMode(document.getElementById("auth"), HIDE, NONE);
         successfulLogin();
       })
       .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
+        unSuccessfulLogin();
       });
     // [END auth_signin_password]
   }
@@ -100,6 +99,7 @@ function signUpWithEmailPassword(e) {
         var errorMessage = error.message;
         console.log(errorCode);
         console.log(errorMessage);
+        unSuccessfulLogin();
       });
     // [END auth_signup_password]
   }
@@ -107,7 +107,12 @@ function signUpWithEmailPassword(e) {
 
 // On login or signup success message
 function successfulLogin(){
-  document.getElementById("modal-title").textContent = "SUCCESSFUL! Please click the X."
+  setMessage("You have successfully logged in!")
+  document.getElementById("close").click();
+}
+
+function unSuccessfulLogin(){
+  setMessage("Please try again.");
 }
 // Set item visibility to mode and display to display
 function setItemMode(item, mode, display){
@@ -129,8 +134,6 @@ function onUserChange(user){
     }
   } else {
     // No user is signed in.
-    setItemMode(document.getElementById("modal-body"), SHOW, "inline");
-    document.getElementById("modal-title").textContent = "LOGIN";
     setItemMode(document.getElementById(LOGIN_NAV), SHOW, BLOCK);
     setItemMode(document.getElementById(MY_ACCOUNT), HIDE, NONE);
     setItemMode(document.getElementById("book-btn"), SHOW, "inline");

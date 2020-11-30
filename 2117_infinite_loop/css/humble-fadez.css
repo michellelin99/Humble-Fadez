@@ -165,7 +165,13 @@ blockquote {
   display: block;
 }
 
-/* Modal */
+/* Popup Modal */
+
+#pop-up-modal-title{
+	margin: 30px 30px 30px 30px;
+}
+
+/* Login Modal */
 
 .modal-body{
 	font-family: 'Bebas Neue', cursive;
