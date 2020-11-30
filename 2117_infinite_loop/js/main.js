@@ -1,4 +1,4 @@
-// constants
+"modal-body"// constants
 var LOGIN_MODAL = 'loginModal';
 var LOGIN_NAV = 'loginNav';
 var MY_ACCOUNT = "myAccount";
@@ -24,10 +24,10 @@ var timeSlotRef = firebase.database().ref("timeslot");
 document.getElementById("contactForm").addEventListener('submit', submitForm);
 
 // User Login
-document.getElementById("loginBtn").addEventListener('submit', signInWithEmailPassword);
+document.getElementById("loginBtn").addEventListener('click', signInWithEmailPassword);
 
 // User Signup
-document.getElementById("signupBtn").addEventListener('submit', signUpWithEmailPassword);
+document.getElementById("signupBtn").addEventListener('click', signUpWithEmailPassword);
 
 // Logout
 document.getElementById("logoutBtn").addEventListener('click', signOut);
@@ -61,20 +61,25 @@ function submitForm(e) {
 
 // Login
 function signInWithEmailPassword(e) {
+  alert("signing in!")
   e.preventDefault();
   var email = getInputVal('email1');
   var password = getInputVal('password1');
-  // [START auth_signin_password]
-  firebase.auth().signInWithEmailAndPassword(email, password)
-    .then((user) => {
-      // Signed in
-      document.getElementById(MY_ACCOUNT).text = email;
-    })
-    .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-    });
-  // [END auth_signin_password]
+
+  if(email!= "" && password != ""){
+    // [START auth_signin_password]
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((user) => {
+        // Signed in
+        setItemMode(document.getElementById("auth"), HIDE, NONE);
+        successfulLogin();
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+      });
+    // [END auth_signin_password]
+  }
 }
 
 // Signup
@@ -82,23 +87,27 @@ function signUpWithEmailPassword(e) {
   e.preventDefault();
   var email = getInputVal('email1');
   var password = getInputVal('password1');
-  // [START auth_signup_password]
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then((user) => {
-      // Signed in
-      onUserChange(user);
-      document.getElementById(MY_ACCOUNT).text = email;
-    })
-    .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-      // ..
-    });
-  // [END auth_signup_password]
+
+  if(email != "" && password != ""){
+    // [START auth_signup_password]
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((user) => {
+        // Signed in
+        successfulLogin();
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+      });
+    // [END auth_signup_password]
+  }
 }
 
+function successfulLogin(){
+  document.getElementById("modal-title").textContent = "SUCCESSFUL! Please click the X."
+}
 // Set item visibility to mode and display to display
 function setItemMode(item, mode, display){
   item.style.visibility = mode;
@@ -119,6 +128,8 @@ function onUserChange(user){
     }
   } else {
     // No user is signed in.
+    setItemMode(document.getElementById("modal-body"), SHOW, "inline");
+    document.getElementById("modal-title").textContent = "LOGIN";
     setItemMode(document.getElementById(LOGIN_NAV), SHOW, BLOCK);
     setItemMode(document.getElementById(MY_ACCOUNT), HIDE, NONE);
     setItemMode(document.getElementById("book-btn"), SHOW, "inline");
@@ -172,19 +183,28 @@ function saveInfo(name, email) {
 
 /* Admin */
 
-//Form to addTimes
+//Form to add a single time slot to timeslot table
 function addTimes(){
   setItemMode(document.getElementById(ADD_FORM), SHOW, BLOCK);
-  document.getElementById("addtimeBtn").addEventListener('click', add);
+  document.getElementById("singleAddBtn").addEventListener('click', add);
 }
 
 function add(e){
   e.preventDefault();
 
   var newTimeSlotRef = timeSlotRef.push();
-  newTimeSlotRef.set({
-    day: document.getElementById('day').value,
-    hour: document.getElementById('hour').value,
-    user: ""
-  });
+  let day = getInputVal('day');
+  let hour = getInputVal('hour');
+
+  if(day != "" && hour != ""){
+    newTimeSlotRef.set({
+      day: day,
+      hour: hour,
+      user: ""
+    });
+
+    alert("sucessfully added " + day + " @ " + hour);
+  }
+
+  document.getElementById(ADD_FORM).reset();
 }

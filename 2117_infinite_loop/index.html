@@ -43,7 +43,7 @@
                 <div class="dropdown">
                   <a class="nav-link tm-nav-link" href="#testimonials">MY ACCOUNT</a>
                 <div class="dropdown-content">
-                  <a href="#" id="logoutBtn">LOGOUT</a>
+                  <a href="#navbar" id="logoutBtn">LOGOUT</a>
                 </div>
               </li>
             </ul>
@@ -277,12 +277,11 @@
 
                 <!-- Add Appointment Dates -->
                 <form id="addTimeForm" method="post">
-                  <label for="day">Day:</label>
-                  <input type="date" id="date" name="day">
-                  <label for="hour">Select a time:</label>
-                  <input type="time" id="hour" name="hour">
-                  <input type="submit" id="addTimeBtn">
+                  <input id="day" name="day" type="date"  class="tm-input" required />
+                  <input id="hour" name="hour" type="time" class="tm-input" required />
+                  <button type="click" id="singleAddBtn" class="btn tm-btn-submit mb-1">ADD</button>
                 </form>
+
                 <!-- Schedule Appointment -->
                 <div id="schedule">
                   <table id="slot", class="center">
@@ -360,9 +359,9 @@
               </div>
               <div class="modal-body">
                 <div class="form-title text-center">
-                  <h2 class="tm-section-title mb-4" style="color:purple"> LOGIN </h2>
+                  <h2 id= "modal-title" class="tm-section-title mb-4" style="color:purple"> LOGIN </h2>
                 </div>
-                <div class="d-flex flex-column text-center">
+                <div id="modal-body" class="d-flex flex-column text-center">
                   <form id ="auth" method="post">
                     <div class="form-group">
                       <input type="email" class="form-control" id="email1"placeholder="Your email address" required>
@@ -370,8 +369,8 @@
                     <div class="form-group">
                       <input type="password" class="form-control" id="password1" placeholder="Your password" required>
                     </div>
-                    <button type="submit" class="btn btn-info btn-block btn-round" id="loginBtn">Login</button>
-                    <button type="submit" class="btn btn-info btn-block btn-round" id="signupBtn">Sign Up</button>
+                    <button type="click" class="btn btn-info btn-block btn-round" id="loginBtn">Login</button>
+                    <button type="click" class="btn btn-info btn-block btn-round" id="signupBtn">Sign Up</button>
 
                   </form>
 
@@ -386,7 +385,7 @@
                     <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Linkedin">
                       <i class="fab fa-linkedin"></i>
                     </button>
-                  </di>
+                  </div>
                 </div>
               </div>
             </div>
