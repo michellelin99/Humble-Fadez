@@ -205,7 +205,9 @@ function add(e){
     newTimeSlotRef.set({
       day: day,
       hour: hour,
-      user: ""
+      user: "",
+      phone: "",
+      name: ""
     });
 
     setMessage("Sucessfully added " + day + " @ " + hour + ".");
