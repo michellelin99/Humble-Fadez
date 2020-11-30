@@ -197,20 +197,36 @@ function addTimes(){
 function add(e){
   e.preventDefault();
 
-  var newTimeSlotRef = timeSlotRef.push();
   let day = getInputVal('day');
   let hour = getInputVal('hour');
 
   if(day != "" && hour != ""){
-    newTimeSlotRef.set({
-      day: day,
-      hour: hour,
-      user: "",
-      phone: "",
-      name: ""
-    });
 
-    setMessage("Sucessfully added " + day + " @ " + hour + ".");
+  timeSlotRef.child(day).once("value", snapshot => {
+  if (!snapshot.exists()){
+     timeSlotRef.push().set({
+       [day]: {}
+     });
+   }
+
+   //TODO - FIX double entry validation
+   timeSlotRef.child(day).child(hour).once("value", snapshot => {
+     if(!snapshot.exists()){
+       let child = timeSlotRef.child(day).push();
+       child.set({
+         hour: hour,
+         user: "",
+         name: "",
+         phone: ""
+           });
+
+        setMessage("Sucessfully added " + day + " @ " + hour + ".");
+      } else {
+        setMessage("You have already added" + day + "@ " + hour + ".");
+      }
+
+      });
+    });
   }
 
   document.getElementById(ADD_FORM).reset();
