@@ -7,22 +7,53 @@ const START_TIME = 9;
 const DATES = {0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday",
 4: "Thursday", 5: "Friday", 6: "Saturday"};
 const original = new Date();
+const delay = ms => new Promise(res => setTimeout(res, ms));
+
 
 /* Firebase */
-
+var timeSlotRef = firebase.database().ref("timeslot");
 
 // global variables
+var datesArray = [];
 var selectedSlot = undefined;
 var selectedDate = null;
 var selectedTime = null;
 var table = document.getElementById("slot");
-var times = new Array(TIMES);
 var btns = new Array(TIMES);
 
 for(let i = 0; i < TIMES; ++i){
-  times[i] = new Array(DAYS).fill(true);
   btns[i] = new Array(DAYS).fill(null);
 }
+
+
+/* Formatting Functions */
+function addZero(curr){
+  if(curr < 10){
+    curr = "0" + curr;
+  }
+
+  return curr;
+}
+
+function formatTime(t){
+  let arr = t.split(" ", 2);
+  let h = parseInt(arr[0]);
+  if(arr[1] == "PM" && h < 12 || arr[1] == "AM" && h == 12){
+    h += 12;
+  }
+  h = addZero(h);
+
+  h += ":00";
+  return h;
+}
+
+function formatDate(dae){
+  let arr = dae.split("/", 3);
+  return arr[2] + "-" + addZero(arr[0]) + "-" + addZero(arr[1]);
+}
+
+
+/* Messages */
 
 function setMessage(message){
   document.getElementById("pop-up-modal-title").textContent = message;
@@ -32,6 +63,9 @@ function setMessage(message){
 function noSlot(){
   setMessage("This time slot is not avaliable.");
 }
+
+
+/* Slot functionality */
 
 function selectSlot(e, time, row, column){
   selectedSlot = [time, row];
@@ -45,9 +79,9 @@ function selectSlot(e, time, row, column){
   let timeFormatted = time;
 
   if (time >= 9 && time < 12){
-    timeFormatted += "AM";
+    timeFormatted += " AM";
   } else{
-    timeFormatted += "PM";
+    timeFormatted += " PM";
   }
   selectedTime = timeFormatted;
 
@@ -65,7 +99,7 @@ function selectSlot(e, time, row, column){
 
   let submissionButton = document.getElementById("schedule-submit");
   submissionButton.innerHTML = "Book " + dateFormatted + " at " + timeFormatted;
-
+  document.getElementById('schedule-submit').addEventListener('click', confirmSlot);
 
   selectedSlot = !selectedSlot;
   selectedTime = timeFormatted;
@@ -75,27 +109,57 @@ function selectSlot(e, time, row, column){
 }
 
 function confirmSlot(){
-  let msg = null;
-  if(confirm("Confirm that you have selected " + selectedDate + " at " + selectedTime)){
-    msg = "A confirmation email has been sent! We look forward to getting" + " your hair to its sharpest form!";
+  let name = getInputVal('schedule-name');
+  let email = getInputVal('schedule-email');
+  let phone = getInputVal('schedule-phone');
 
-  } else {
-    msg =  "Please select another time by clicking BOOK once again.";
+  if(name != "" && email != "" && phone != ""){
+
+    let msg = "Please select another time by clicking BOOK once again.";
+    if(confirm("Confirm that you have selected " + selectedDate + " at " + selectedTime)){
+      let selectedT = formatTime(selectedTime);
+      let selectedD = formatDate(selectedDate);
+
+      //set time slot - TO DO FIX
+      timeSlotRef.child(selectedD).orderByKey().once("value", data =>{
+        data.forEach(d => {
+        if(d.val().hour == selectedT){
+          timeSlotRef.child(selectedD).child(d.key).set({
+            hour: selectedT,
+            name: name,
+            phone: phone,
+            user: email
+          });
+        }
+      });
+      });
+    }
+
+    setMessage(msg);
+    document.getElementById('schedule-submit').removeEventListener('click', confirmSlot);
+    let form = document.getElementById("schedule-info");
+    form.style.visibility = "hidden";
+    form.style.display = "none";
+    $('#slot').empty();
+
   }
-
-  setMessage(msg);
-
-  let form = document.getElementById("schedule-info");
-  form.style.visibility = "hidden";
-  form.style.display = "none";
-  $('#slot').empty();
 
 }
 
-function generateSlot(){
-  $('#slot').empty();
 
-  times[0][0] = false;
+// Function to reset variables that keep track of selection
+function resetValues(){
+  selectedDate = null;
+  selectedTime = null;
+  selectedSlot = undefined;
+  datesArray = [];
+}
+
+// Generate table with slots
+function generateSlot(){
+  resetValues();
+
+  $('#slot').empty();
 
   var original = new Date();
   var currentDate = original;
@@ -107,20 +171,29 @@ function generateSlot(){
   while(d < DAYS){
     currentDate.setDate(currentDate.getDate() + 1);
     if(currentDate.getDay() >= START_DAY){
+
       var curr = heading.insertCell(d);
       curr.className = "mb-0";
       curr.innerHTML = DATES[currentDate.getDay()] + " | " + (currentDate.getMonth() + 1)
                       + "/" + currentDate.getDate() + "/" + currentDate.getFullYear();
+
+      //config time
+      let m = (currentDate.getMonth() + 1);
+      m = addZero(m);
+      let de = currentDate.getDay() - 1; //WEIRD BUG HERE TO DO?
+      de = addZero(de);
+
+      datesArray.push(currentDate.getFullYear() + "-" + m + "-" + de);
       ++d;
     }
   }
+
 
   //generate slots
 
   var time = START_TIME;
   for(let i = 0; i < TIMES; ++i){
     let row = table.insertRow(i + 1);
-
     for(let j = 0; j < DAYS; ++j){
       let slot = row.insertCell(j);
 
@@ -141,15 +214,8 @@ function generateSlot(){
         btns[i][j].value += "PM";
       }
 
-
-      //add correct event listener based on avaliability
-      if(times[i][j]){
-        (btns[i][j]).addEventListener("click", selectSlot.bind(null, time, i, j), false);
-      } else {
-        (btns[i][j]).addEventListener("click", noSlot);
-        btns[i][j].style.backgroundColor = "grey";
-      }
-
+      btns[i][j].style.backgroundColor = "grey";
+      btns[i][j].addEventListener("click", noSlot);
       slot.appendChild(btns[i][j]);
 
     }
@@ -158,4 +224,36 @@ function generateSlot(){
     time %= 12;
   }
 
+  for(let i = 0; i < DAYS; ++i){
+    generateSingleDay(datesArray[i], i);
+  }
+
+}
+
+
+// Make single slot as avaliable is user is empty
+function makeAvaliable(user, hour, index){
+  var currTime = parseInt(hour.split(':', 2));
+  var timeIndex = currTime - 9;
+  if(user === "" && timeIndex < TIMES && index < DAYS){
+
+    btns[timeIndex][index].style.backgroundColor = "purple";
+    btns[timeIndex][index].removeEventListener("click", noSlot);
+    btns[timeIndex][index].addEventListener("click", selectSlot.bind(null, currTime,timeIndex, index), false);
+  }
+}
+
+
+// Make all slots where user is empty as avaliable
+function generateSingleDay(date, index){
+  timeSlotRef.child(date).orderByChild("hour").on("value", data =>{
+    data.forEach(d => {
+      //time slot already filled
+      if(d.exists()){
+      let user = d.val().user;
+      let hour = d.val().hour;
+      makeAvaliable(user, hour, index);
+    }
+    });
+  });
 }

@@ -205,7 +205,7 @@ function add(e){
   timeSlotRef.child(day).once("value", snapshot => {
   if (!snapshot.exists()){
      timeSlotRef.push().set({
-       [day]: {}
+       [day]: []
      });
    }
 
@@ -213,7 +213,7 @@ function add(e){
    timeSlotRef.child(day).child(hour).once("value", snapshot => {
      if(!snapshot.exists()){
        let child = timeSlotRef.child(day).push();
-       child.set({
+       child.update({
          hour: hour,
          user: "",
          name: "",

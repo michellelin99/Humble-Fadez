@@ -291,11 +291,11 @@
 
                 <!-- Fill in Form for Appointment -->
                 <div id="schedule-info">
-                  <form id= "schedule-form" action="" onsubmit="confirmSlot();return false;" method="post">
+                  <form id= "schedule-form" method="post">
                     <input id="schedule-name" name="name" type="text" placeholder="Your Name" class="tm-input" required />
                     <input id="schedule-email" name="email" type="email" placeholder="Your Email" class="tm-input" required />
                     <input id="schedule-phone" name="phone" type="tel" placeholder="Your Phone #" class="tm-input" required />
-                    <button id ="schedule-submit" type="submit" class="btn tm-btn-submit mb-1">BOOK</button>
+                    <button id ="schedule-submit" type="click" class="btn tm-btn-submit mb-1">BOOK</button>
                   </form>
                 </div>
             </div>
@@ -407,7 +407,6 @@
 
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/features.js"></script>
-    <script src="js/schedule.js"></script>
     <script src="slick/slick.min.js"></script>
     <script src="magnific-popup/jquery.magnific-popup.min.js"></script>
     <script src="js/easing.min.js"></script>
@@ -444,6 +443,7 @@
     </script>
 
     <script src="js/main.js"></script>
+    <script src="js/schedule.js"></script>
     <script>
 
       function getOffSet(){
