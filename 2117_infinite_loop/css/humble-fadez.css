@@ -145,7 +145,33 @@ blockquote {
 .tm-navbar.scroll .navbar-toggler-icon {
   color: #707070;
 }
-/* Modal */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Popup Modal */
+
+#pop-up-modal-title{
+	margin: 30px 30px 30px 30px;
+}
+
+/* Login Modal */
 
 .modal-body{
 	font-family: 'Bebas Neue', cursive;
@@ -177,6 +203,12 @@ blockquote {
 
 .btn-round {
   border-radius: 3rem;
+}
+
+.btn {
+	background-color: purple;
+	border: none;
+	margin-right: 10px;
 }
 
 .delimiter {
@@ -581,11 +613,24 @@ figure.effect-honey:hover h2 i {
 
 /* Schedule */
 
-#schedule-info{
-	margin: 30px 0px 30px 0px;
+#addTimeForm{
+	margin: 0px 0px 60px 0px;
 	visibility: hidden;
 	display: none;
 }
+
+#addtimes-btn{
+	visibility: hidden;
+	display: none;
+	justify-content: center;
+}
+
+#schedule-info{
+	margin: 60px 0px 60px 0px;
+	visibility: hidden;
+	display: none;
+}
+
 
 /* Contact */
 

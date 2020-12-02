@@ -12,11 +12,3 @@ for(i = 1; i <= 8; ++i){
   $(".img" + i).attr("href","img/" + i + ".png");
   $(".img" + i).attr("src","img/" + i + ".png");
 }
-
-//load sign up
-$(document).ready(function() {
-  $('#loginModal').modal('show');
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
-});
