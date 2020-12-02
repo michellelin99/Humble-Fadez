@@ -36,8 +36,14 @@
               <li class="nav-item">
                   <a class="nav-link tm-nav-link" href="#testimonials">GALLERY</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" id="loginNav">
                   <a type="button" class="nav-link tm-nav-link" data-toggle="modal" data-target="#loginModal"> LOGIN </a>
+              </li>
+              <li class="nav-item" id="myAccount">
+                <div class="dropdown">
+                  <a class="nav-link tm-nav-link" href="#testimonials">MY ACCOUNT</a>
+                <div class="dropdown-content">
+                  <a href="#navbar" id="logoutBtn">LOGOUT</a>
                 </div>
               </li>
             </ul>
@@ -69,13 +75,18 @@
             <div class="row tm-content-box">
         		<div class="col-lg-1">
                 </div>
-                <div class="col-lg-5">
+                <div class="text-center col-12">
                     <div class="tm-intro-text-container">
-                    	                        <h2 class="tm-text-primary mb-4">Kelnitra Robinson</h2>
-                         <img src='img/Kelz.png' style='float: top;'/>
-                        <p class="mb-4 tm-intro-text">
-                         Kelnitra Robinson, affectionately known as “Kelz”, is a licensed Master Barber located in Nashville, Tennessee.  Kelz has been cutting hair and servicing clients in the Nashville area for more than 6 years.  Her love for barbering began many years ago when she started cutting her nephews’ hair. This love quickly evolved into a strong passion, which ultimately led Kelz to the classroom for formal barber education and training.  Since that time, Kelz has worked alongside and been mentored by some of Nashville’s top barbers and barber influencers in the Atlanta, Houston, and Dallas barber industry.  Kelz attends numerous barber conferences, classes, and hair shows throughout the year, as she is committed to perfecting her craft, expanding her knowledge, and fueling her creativity and passion.  In fact, her creativity and passion is exactly what earned her a trophy for placing among the top 3 barbers in the Xotics Hair Battle in 2019. As a talented, gifted, award-winning barber, Kelz remains humble, and that humility is what inspired and birthed her brand Humble Fadez.  Kelz is dedicated to building strong connections with her clients and helping them express their personalities through every cut.  When Kelz is not creating waves in the barbershop, she is traveling, cooking, expanding her other businesses and spending time with her family.  
-“Barbering saved my life”- Kelz Tha Barber</p>
+
+                      <h2 class="tm-text-primary mb-4">Kelnitra Robinson</h2>
+                          <img src='img/Kelz.png' style='float: top;'/>
+                              <br> <br>
+                              <p class="mb-4 tm-intro-text">
+                                Kelnitra Robinson, affectionately known as “Kelz”, is a licensed Master Barber located in Nashville, Tennessee.  Kelz has been cutting hair and servicing clients in the Nashville area for more than 6 years.  Her love for barbering began many years ago when she started cutting her nephews’ hair. This love quickly evolved into a strong passion, which ultimately led Kelz to the classroom for formal barber education and training.  Since that time, Kelz has worked alongside and been mentored by some of Nashville’s top barbers and barber influencers in the Atlanta, Houston, and Dallas barber industry.  Kelz attends numerous barber conferences, classes, and hair shows throughout the year, as she is committed to perfecting her craft, expanding her knowledge, and fueling her creativity and passion.  In fact, her creativity and passion is exactly what earned her a trophy for placing among the top 3 barbers in the Xotics Hair Battle in 2019. As a talented, gifted, award-winning barber, Kelz remains humble, and that humility is what inspired and birthed her brand Humble Fadez.  Kelz is dedicated to building strong connections with her clients and helping them express their personalities through every cut.  When Kelz is not creating waves in the barbershop, she is traveling, cooking, expanding her other businesses and spending time with her family.
+                              </p>
+                            <br><br>
+                            <h2 class="tm-text-primary mb-4">  <b> <em> “Barbering saved my life” </b></em> - Kelz Tha Barber </h2>
+
                     </div>
                 </div>
             </div>
@@ -95,7 +106,9 @@
               <div class="tm-testimonials-carousel">
                 <figure class="tm-testimonial-item">
                   <img src="img/Testimonial1.jpg" alt="Image" class="img-fluid mx-auto">
-                  <blockquote>Kelz's haircut gives me the confidence I need to succeed in class and in my career. Her attention to detail from every cut to trim is unparalled. She continously communciates with her clients and makes sure you leave with the haircut you had in mind when you arrive at Humble Fadez. I highly recommend her!</blockquote>
+
+                  <blockquote>Kelz's haircut gives me the confidence I need to succeed in class and in my career, I highly recommend her!</blockquote>
+
                   <figcaption>Syed R.</figcaption>
                 </figure>
 
@@ -137,10 +150,11 @@
           <div class="text-center col-12">
               <h2 class="tm-text-primary tm-section-title mb-4">GALLERY</h2>
               <p class="mx-auto tm-section-desc">
-                <!--(***Insert Text***)-->
+
                 Check out these amazing cuts I've given over the years, from children to students to adults and the elderly, customer satisfication and perfection is my goal!
               </p>
-              <a class="btn tm-btn-submit" href="https://www.instagram.com/kelzthabarber/" role="button">Instagram!</a>
+              <a class="btn tm-btn-submit" href="https://www.instagram.com/kelzthabarber/" role="button">Instagram!</a>              </p>
+
           </div>
         </div>
         <div class="row">
@@ -262,10 +276,18 @@
                       <td>Saturday</td>
                       <td>9:00 AM - 5:30 PM</td>
                     </tr>
-                  </table><br>
-                  <br>
-                   <button id="book-btn" class="btn tm-btn-submit" >BOOK NOW</button>
-                </p> <br>
+                  </table><br><br>
+                   <button id="book-btn" class="btn tm-btn-submit">BOOK NOW</button>
+                   <button id="addtimes-btn" class="btn tm-btn-submit">ADD TIMES</button>
+
+                 <br>
+
+                <!-- Add Appointment Dates -->
+                <form id="addTimeForm" method="post">
+                  <input id="day" name="day" type="date"  class="tm-input" required />
+                  <input id="hour" name="hour" type="time" class="tm-input" required />
+                  <button type="click" id="singleAddBtn" class="btn tm-btn-submit mb-1">ADD</button>
+                </form>
 
                 <!-- Schedule Appointment -->
                 <div id="schedule">
@@ -276,11 +298,11 @@
 
                 <!-- Fill in Form for Appointment -->
                 <div id="schedule-info">
-                  <form id= "schedule-form" action="" onsubmit="confirmSlot();return false;" method="get">
+                  <form id= "schedule-form" method="post">
                     <input id="schedule-name" name="name" type="text" placeholder="Your Name" class="tm-input" required />
                     <input id="schedule-email" name="email" type="email" placeholder="Your Email" class="tm-input" required />
                     <input id="schedule-phone" name="phone" type="tel" placeholder="Your Phone #" class="tm-input" required />
-                    <button id ="schedule-submit" type="submit" class="btn tm-btn-submit mb-1">BOOK</button>
+                    <button id ="schedule-submit" type="click" class="btn tm-btn-submit mb-1">BOOK</button>
                   </form>
                 </div>
             </div>
@@ -338,23 +360,25 @@
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header border-bottom-0">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
                 <div class="form-title text-center">
-                  <h2 class="tm-section-title mb-4" style="color:purple"> LOGIN </h2>
+                  <h2 id= "modal-title" class="tm-section-title mb-4" style="color:purple"> LOGIN </h2>
                 </div>
-                <div class="d-flex flex-column text-center">
-                  <form>
+                <div id="modal-body" class="d-flex flex-column text-center">
+                  <form id ="auth" method="post">
                     <div class="form-group">
                       <input type="email" class="form-control" id="email1"placeholder="Your email address" required>
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control" id="password1" placeholder="Your password" required>
                     </div>
-                    <button type="button" class="btn btn-info btn-block btn-round">Login</button>
+                    <button type="click" class="btn btn-info btn-block btn-round" id="loginBtn">Login</button>
+                    <button type="click" class="btn btn-info btn-block btn-round" id="signupBtn">Sign Up</button>
+
                   </form>
 
                   <div class="text-center text-muted delimiter">or use a social network</div>
@@ -368,13 +392,19 @@
                     <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Linkedin">
                       <i class="fab fa-linkedin"></i>
                     </button>
-                  </di>
+                  </div>
                 </div>
               </div>
             </div>
-              <div class="modal-footer d-flex justify-content-center">
-                <div class="signup-section">Not a member yet? <a href="#a" class="text-info"> Sign Up</a>.</div>
-              </div>
+          </div>
+        </div>
+
+        <!-- Modal for popup message -->
+        <div id="popUpModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <h2 id="pop-up-modal-title" class="tm-section-title mb-4" style="color:purple"> LOGIN </h2>
+            </div>
           </div>
         </div>
 
@@ -384,12 +414,13 @@
 
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/features.js"></script>
-    <script src="js/schedule.js"></script>
     <script src="slick/slick.min.js"></script>
     <script src="magnific-popup/jquery.magnific-popup.min.js"></script>
     <script src="js/easing.min.js"></script>
     <script src="js/jquery.singlePageNav.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
 
@@ -419,6 +450,7 @@
     </script>
 
     <script src="js/main.js"></script>
+    <script src="js/schedule.js"></script>
     <script>
 
       function getOffSet(){
