@@ -80,6 +80,7 @@ blockquote {
 .tm-navbar {
   position: fixed;
   width: 100%;
+  height: 75px;
   z-index: 1000;
   background-color: transparent;
   transition: all 0.3s ease;
@@ -225,7 +226,7 @@ blockquote {
   padding: 0.3rem 0rem;
 }
 
-/* Hero */
+/* Home */
 #home {
   background-color: #222;
   background-image: url(../img/black-purple-gradient.jpg);
@@ -373,7 +374,7 @@ blockquote {
 
 @media (max-width: 991px) {
   #testimonials {
-    background-image: url(../img/black-background-mobile.jpg);
+    background-image: url(../img/black-purple-gradient-mobile.jpg);
   }
 }
 
@@ -419,6 +420,54 @@ blockquote {
   text-align: right;
   font-family: 'Squada One', cursive;
   font-size: 1.1rem;
+}
+
+/* Gallery */
+div.gallery {
+  border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 /* Work */
