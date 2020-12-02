@@ -132,6 +132,9 @@ function onUserChange(user){
     // User is signed in.
     setItemMode(document.getElementById(LOGIN_NAV), HIDE, NONE);
     setItemMode(document.getElementById(MY_ACCOUNT), SHOW, BLOCK);
+    setItemMode(document.getElementById("book-btn"), SHOW, "inline");
+    document.getElementById("book-btn").addEventListener("click", generateSlot);
+    
     if(user.email == ADMIN){
       document.getElementById(ADD_BUTTON).addEventListener("click", addTimes);
       setItemMode(document.getElementById(ADD_BUTTON), SHOW, "inline");
