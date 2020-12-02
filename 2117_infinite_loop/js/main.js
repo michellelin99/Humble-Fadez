@@ -32,6 +32,16 @@ document.getElementById("signupBtn").addEventListener('click', signUpWithEmailPa
 // Logout
 document.getElementById("logoutBtn").addEventListener('click', signOut);
 
+// Sign up with Google
+document.getElementById("googleBtn").addEventListener('click', signUpWithGoogle);
+
+// Sign up with Facebook
+document.getElementById("facebookBtn").addEventListener('click', signUpWithFacebook);
+
+// Sign up with Twitter
+document.getElementById("twitterBtn").addEventListener('click', signUpWithTwitter);
+
+
 
 // Submit Mailing Form
 function submitForm(e) {
@@ -103,6 +113,84 @@ function signUpWithEmailPassword(e) {
       });
     // [END auth_signup_password]
   }
+}
+
+// Signup via Google sign-in
+function  signUpWithGoogle() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+firebase.auth().signInWithPopup(provider).then(function(result) {
+  // This gives you a Google Access Token. You can use it to access the Google API.
+  var token = result.credential.accessToken;
+  // The signed-in user info.
+  var user = result.user;
+  // ...
+  successfulLogin();
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
+    
+    console.log(errorCode);
+    console.log(errorMessage);
+    unSuccessfulLog();
+  // ...
+});
+}
+
+// Signup via Facebook sign-in
+function  signUpWithFacebook() {
+    var provider = new firebase.auth.FacebookAuthProvider();
+firebase.auth().signInWithPopup(provider).then(function(result) {
+  // This gives you a Google Access Token. You can use it to access the Google API.
+  var token = result.credential.accessToken;
+  // The signed-in user info.
+  var user = result.user;
+  // ...
+  successfulLogin();
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
+    
+    console.log(errorCode);
+    console.log(errorMessage);
+    unSuccessfulLog();
+  // ...
+});
+}
+
+// Signup via Twitter sign-in
+function  signUpWithTwitter() {
+    var provider = new firebase.auth.TwitterAuthProvider();
+firebase.auth().signInWithPopup(provider).then(function(result) {
+  // This gives you a Twitter Access Token. You can use it to access the Twitter API.
+  var token = result.credential.accessToken;
+  // The signed-in user info.
+  var user = result.user;
+  // ...
+  successfulLogin();
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
+    
+    console.log(errorCode);
+    console.log(errorMessage);
+    unSuccessfulLog();
+  // ...
+});
 }
 
 // On login or signup success message

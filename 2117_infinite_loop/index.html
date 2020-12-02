@@ -4,6 +4,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+      <!-- Google Sign in Api -->
+    <meta name="google-signin-client_id" content="414293845414-r45vg1rh1ao82rhnafna41ocf2111cm1.apps.googleusercontent.com">
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Humble Fadez</title>
@@ -377,14 +380,14 @@
 
                   <div class="text-center text-muted delimiter">or use a social network</div>
                   <div class="d-flex justify-content-center social-buttons">
-                    <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Twitter">
+                    <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Twitter" id="twitterBtn">
                       <i class="fab fa-twitter"></i>
                     </button>
-                    <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
+                    <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Facebook" id="facebookBtn">
                       <i class="fab fa-facebook"></i>
                     </button>
-                    <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Linkedin">
-                      <i class="fab fa-linkedin"></i>
+                    <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Google" id="googleBtn">
+                      <i class="fab fa-google"></i>
                     </button>
                   </div>
                 </div>
