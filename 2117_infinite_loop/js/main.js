@@ -16,6 +16,7 @@ firebase.auth.Auth.Persistence.LOCAL;
 
 var infoRef =  firebase.database().ref("info");
 var timeSlotRef = firebase.database().ref("timeslot");
+var confirmedRef = firebase.database().ref("confirmed")
 
 
 // Listen for form submits
@@ -133,7 +134,7 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
   var email = error.email;
   // The firebase.auth.AuthCredential type that was used.
   var credential = error.credential;
-    
+
     console.log(errorCode);
     console.log(errorMessage);
     unSuccessfulLog();
@@ -159,7 +160,7 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
   var email = error.email;
   // The firebase.auth.AuthCredential type that was used.
   var credential = error.credential;
-    
+
     console.log(errorCode);
     console.log(errorMessage);
     unSuccessfulLog();
@@ -185,7 +186,7 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
   var email = error.email;
   // The firebase.auth.AuthCredential type that was used.
   var credential = error.credential;
-    
+
     console.log(errorCode);
     console.log(errorMessage);
     unSuccessfulLog();
@@ -222,11 +223,12 @@ function onUserChange(user){
     setItemMode(document.getElementById(MY_ACCOUNT), SHOW, BLOCK);
     setItemMode(document.getElementById("book-btn"), SHOW, "inline");
     document.getElementById("book-btn").addEventListener("click", generateSlot);
-    
+
     if(user.email == ADMIN){
       document.getElementById(ADD_BUTTON).addEventListener("click", addTimes);
       setItemMode(document.getElementById(ADD_BUTTON), SHOW, "inline");
       setItemMode(document.getElementById("book-btn"), HIDE, NONE);
+      getConfirmedAppointments();
     }
   } else {
     // No user is signed in.
@@ -277,6 +279,34 @@ function saveInfo(name, email) {
 }
 
 /* Admin */
+
+function getConfirmedAppointments(){
+  let table = document.getElementById("slot");
+  let heading = document.createElement('h2');
+  heading.textContent = "Appointment";
+  heading.class = "mb-0";
+  table.insertRow(0).insertCell(0).appendChild(heading);
+  let i = 1;
+
+  confirmedRef.orderByKey().on("value", data =>{
+    data.forEach(d => {
+      //time slot already filled
+      if(d.exists()){
+
+      let row = table.insertRow(i);
+      let col = row.insertCell(0);
+      let text = document.createElement('h2');
+      text.textContent = d.val().day + " @ "  + d.val().hour
+      + " with " + d.val().name + " || phone: " + d.val().phone + " email: " + d.val().user;
+      text.class = "mb-0";
+      text.style.fontSize = "15px"
+      col.appendChild(text);
+      ++i;
+    }
+    });
+  });
+
+}
 
 // Set form to add timeslot to visible
 function addTimes(){
