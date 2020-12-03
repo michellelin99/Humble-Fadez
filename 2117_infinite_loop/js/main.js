@@ -234,8 +234,7 @@ function onUserChange(user){
     // No user is signed in.
     setItemMode(document.getElementById(LOGIN_NAV), SHOW, BLOCK);
     setItemMode(document.getElementById(MY_ACCOUNT), HIDE, NONE);
-    setItemMode(document.getElementById("book-btn"), SHOW, "inline");
-    document.getElementById("book-btn").addEventListener("click", generateSlot);
+    setItemMode(document.getElementById("book-btn"), HIDE, "inline");
     setItemMode(document.getElementById(ADD_FORM), HIDE, NONE)
     setItemMode(document.getElementById(ADD_BUTTON), HIDE, NONE);
   }
