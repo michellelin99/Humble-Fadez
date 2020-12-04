@@ -13,6 +13,7 @@ Functional Testing
 - Under “Join Mailing List”, enter email address and click Join
 - Under “Join Mailing List”, just click Join
 - Under “Join Mailing List”, click Our Location to view the location
+- Check Firebase to ensure that data has successfully been stored in database
 
 Usability Testing
 - Scroll through the website to ensure ease of use with an infinite scroll
@@ -41,15 +42,29 @@ Compatibility Testing
 - [ ] Click on My Account on the Nav bar => Logout.
 
 - [ ] Login with existing  account.
-- [ ] Login with non-existing acccount.
+- [ ] Login with non-existing account.
+- [ ] Login with right username, wrong password.
+- [ ] Login with wrong username, right password.
+- [ ] Login with data fields empty, should fail.
 
 - [ ] Login as admin using below account info:
       - info in brightspace submission box for security reasons
  
 - [ ] Login with Twitter
+- Check Firebase to ensure that data has successfully been stored in database
 - [ ] Login with Facebook
+- Check Firebase to ensure that data has successfully been stored in database
 - [ ] Login with Gmail
+- Check Firebase to ensure that data has successfully been stored in database
 
+## Form Submission
+
+- [ ] Submit name and email address
+- Check Firebase to ensure that data has successfully been stored in database
+- [ ] Submit name, no email address
+- Should fail
+- [ ] Submit no name, but email address
+- Should fail
 
 ## Scheduler 
 
