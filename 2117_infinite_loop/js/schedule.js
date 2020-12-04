@@ -1,5 +1,6 @@
 
 //constants
+
 const DAYS = 3;
 const TIMES = 8;
 const START_DAY = 2;
@@ -8,9 +9,9 @@ const DATES = {0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday",
 4: "Thursday", 5: "Friday", 6: "Saturday"};
 const original = new Date();
 
-
 /* Firebase */
 var timeSlotRef = firebase.database().ref("timeslot");
+
 
 // global variables
 var datesArray = [];
@@ -26,6 +27,15 @@ for(let i = 0; i < TIMES; ++i){
 
 
 /* Formatting Functions */
+
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
 function addZero(curr){
   if(curr < 10){
     curr = "0" + curr;
@@ -114,14 +124,26 @@ function confirmSlot(){
 
   if(name != "" && email != "" && phone != ""){
 
-    let msg = "Please select another time by clicking BOOK once again.";
     if(confirm("Confirm that you have selected " + selectedDate + " at " + selectedTime)){
+      sendEmail(email);
+
       let selectedT = formatTime(selectedTime);
       let selectedD = formatDate(selectedDate);
 
-      //set time slot - TO DO FIX
+
+      //adding to confirm table
+      firebase.database().ref("confirmed").push().set({
+        day: selectedD,
+        hour: selectedT,
+        name: name,
+        phone: phone,
+        user: email
+      });
+
+      alert("Sending data!");
       timeSlotRef.child(selectedD).orderByKey().once("value", data =>{
         data.forEach(d => {
+        alert("Confirmed!");
         if(d.val().hour == selectedT){
           timeSlotRef.child(selectedD).child(d.key).set({
             hour: selectedT,
@@ -132,9 +154,12 @@ function confirmSlot(){
         }
       });
       });
+    } else {
+      alert("Please try again. Appointment was not scheduled.");
+
     }
 
-    setMessage(msg);
+    setMessage("Please select another time by clicking BOOK once again.");
     document.getElementById('schedule-submit').removeEventListener('click', confirmSlot);
     let form = document.getElementById("schedule-info");
     form.style.visibility = "hidden";
@@ -256,3 +281,19 @@ function generateSingleDay(date, index){
     });
   });
 }
+
+
+function sendEmail(emailAddress) {
+      Email.send({
+        Host: "smtp.gmail.com",
+        Username: "humble.fadez.confirmation@gmail.com",
+        Password: "testing123A",
+        To: 'humble.fadez.confirmation@gmail.com, emailAddress',
+        From: "humble.fadez.confirmation@gmail.com",
+        Subject: "Sending Email using javascript",
+        Body: "Well that was easy!!",
+      })
+        .then(function (message) {
+          alert.fire("Your appointment has been confirmed!");
+        });
+    }
