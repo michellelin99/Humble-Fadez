@@ -1,0 +1,10 @@
+Alan Koo
+Anna Kuo
+Michelle Lin
+Syed Rahman
+
+Installation and Deployment Instructions
+
+Once final approvals have been given from the client, we will purchase the humblefadez.com domain.
+Currently, the website is currently hosted at the following domain:
+https://humble-fadez-2171b.web.app/

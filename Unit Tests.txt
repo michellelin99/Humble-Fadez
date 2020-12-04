@@ -1,0 +1,33 @@
+Alan Koo
+Anna Kuo
+Michelle Lin
+Syed Rahman
+
+Unit Tests
+
+The test suite for our project is not executable but can be conducted manually:
+
+Functional Testing
+- Under “Join Mailing List”, enter name and email address and click Join
+- Under “Join Mailing List”, enter name only and click Join
+- Under “Join Mailing List”, enter email address and click Join
+- Under “Join Mailing List”, just click Join
+- Under “Join Mailing List”, click Our Location to view the location
+
+Usability Testing
+- Scroll through the website to ensure ease of use with an infinite scroll
+- Scroll through the website to ensure navigation bar matches current section
+- In the top right corner, click About to reach the About Me section
+- In the top right corner, click Testimonials to reach the Testimonials section
+- In the top right corner, click Gallery to reach the Gallery section
+- In the top right corner, click Connect to reach the Booking and Mailing List
+page
+- In the top left corner, click Humble Fadez to reach the landing page
+- On the testimonials page, carousel through the testimonials 
+- On the gallery page, click the Instagram button to be redirected to Kelz's instagram page
+
+Compatibility Testing
+- View website on a standard desktop
+- View website on a mobile device
+- View website on an iPad or alternative device
+- View website using a different browser- Chrome, Firefox, Safari etc.
