@@ -8,3 +8,48 @@ Installation and Deployment Instructions
 Once final approvals have been given from the client, we will purchase the humblefadez.com domain.
 Currently, the website is currently hosted at the following domain:
 https://humble-fadez-2171b.web.app/
+
+## OAuth Testing Cases
+
+- [ ] Sign up for new account.
+- [ ] Click on My Account on the Nav bar => Logout.
+
+- [ ] Login with existing  account.
+- [ ] Login with non-existing acccount.
+
+- [ ] Login as admin using below account info:
+      - info in brightspace submission box for security reasons
+ 
+- [ ] Login with Twitter
+- [ ] Login with Facebook
+- [ ] Login with Gmail
+
+
+## Scheduler 
+
+### Booking Time
+
+- [ ] Login as admin. 
+- [ ] Scroll down to click on add times.
+- [ ] Select a time from the date + time picker (should be within the next three days between 9AM - 4 PM not including today + skip Saturdays and Mondays)
+- [ ] Click on add.
+- [ ] Logout.
+
+### Selecting Time
+
+- [ ] Login as non-admin
+- [ ] Scroll down to click on book time.
+- [ ] Date time you just added should be avaliable as a purple button.
+- [ ] Click on a grey button. Should say not avaliable.
+- [ ] Click on purple button.
+- [ ] Fill in information.
+- [ ] Click book.
+- [ ] You should get a message to confirm test once with reject (then select the button again) and test once with accept.
+- [ ] Confirm any messages. 
+
+### Time Booked
+
+- [ ] Login in as admin
+- [ ] Scroll down to appointments.
+- [ ] Your newly booked appointment should be listed there.
+
